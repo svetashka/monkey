@@ -44,6 +44,7 @@ public class ParseBencode {
         currentIndex++;
         result = Arrays.copyOfRange(buffer, currentIndex, num + currentIndex);
         currentIndex = num + currentIndex;
+        out.endPosition = currentIndex - 1;
         out.type = BencodeType.STRING;
         out.string = result;
         return out;
@@ -57,6 +58,7 @@ public class ParseBencode {
             currentIndex++;
         }
         num = Integer.parseInt(new String(Arrays.copyOfRange(buffer, out.startPosition + 1, currentIndex)));
+        out.endPosition = currentIndex;
         currentIndex++;
         out.type = BencodeType.INTEGER;
         out.integer = num;
@@ -71,6 +73,7 @@ public class ParseBencode {
             Bencode item = parse();
             result.add(item);
         }
+        out.endPosition = currentIndex;
         currentIndex++;
         out.type = BencodeType.LIST;
         out.list = result;
@@ -86,6 +89,7 @@ public class ParseBencode {
             Bencode value = parse();
             result.put(new String(key.string), value);
         }
+        out.endPosition = currentIndex;
         currentIndex++;
         out.type = BencodeType.DICTIONARY;
         out.dictionary = result;

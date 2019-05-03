@@ -29,6 +29,8 @@ public class ParseBencodeTest {
         // Then
         assertThat(result.string, is("Hello world".getBytes()));
         assertThat(parser.currentIndex, is(str.length));
+        assertThat(result.startPosition, is(0));
+        assertThat(result.endPosition, is(str.length - 1));
     }
 
     @Test
@@ -43,6 +45,8 @@ public class ParseBencodeTest {
         // Then
         assertThat(result.integer, is(-3));
         assertThat(parser.currentIndex, is(str.length));
+        assertThat(result.startPosition, is(0));
+        assertThat(result.endPosition, is(str.length - 1));
     }
 
     @Test
@@ -57,6 +61,8 @@ public class ParseBencodeTest {
         // Then
         assertThat(result.integer, is(10));
         assertThat(parser.currentIndex, is(str.length));
+        assertThat(result.startPosition, is(0));
+        assertThat(result.endPosition, is(str.length - 1));
     }
 
     @Test
@@ -71,6 +77,8 @@ public class ParseBencodeTest {
         // Then
         assertThat(result.list.get(0).string, is("spam".getBytes()));
         assertThat(parser.currentIndex, is(str.length));
+        assertThat(result.startPosition, is(0));
+        assertThat(result.endPosition, is(str.length - 1));
     }
 
     @Test
@@ -91,6 +99,8 @@ public class ParseBencodeTest {
             assertThat(result.list.get(i).string, is(resultList.get(i).getBytes()));
         }
         assertThat(parser.currentIndex, is(str.length));
+        assertThat(result.startPosition, is(0));
+        assertThat(result.endPosition, is(str.length - 1));
     }
 
     @Test
@@ -105,6 +115,8 @@ public class ParseBencodeTest {
         // Then
         assertThat(result.list.get(0).string, is("spam".getBytes()));
         assertThat(parser.currentIndex, is(str.length));
+        assertThat(result.startPosition, is(0));
+        assertThat(result.endPosition, is(str.length - 1));
     }
 
     @Test
@@ -127,5 +139,7 @@ public class ParseBencodeTest {
             assertThat(result.dictionary.get(entry.getKey()).string, is(resultMap.get(entry.getKey()).getBytes()));
         }
         assertThat(parser.currentIndex, is(str.length));
+        assertThat(result.startPosition, is(0));
+        assertThat(result.endPosition, is(str.length - 1));
     }
 }
