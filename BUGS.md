@@ -1,3 +1,3 @@
 # all known bugs
 
-1 - some bug
+1 - some fail
