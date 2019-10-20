@@ -7,3 +7,7 @@ java
 
 - feature 1
 - feature 2
+
+## bug fix 1
+
+- improved something
